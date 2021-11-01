@@ -37,18 +37,20 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
-import TheFooter from '../components/TheFooter.vue';
+import { onMounted, reactive } from 'vue';
 import StatsCard from '../components/StatsCard.vue';
 import Table from '../components/Table.vue';
 import axios from 'axios';
 import { Region } from '../types';
+import { useTitle } from '@vueuse/core';
 
 interface Store {
   isFetching: boolean;
   error: Error | null;
   regions: Region[];
 }
+
+useTitle('Civo.com');
 
 const store = reactive<Store>({
   isFetching: false,

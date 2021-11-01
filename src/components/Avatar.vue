@@ -16,7 +16,7 @@
         <img
           alt="Avatar"
           class="w-full rounded-full align-middle border-none shadow-lg"
-          :src="$props.src"
+          :src="src"
         />
       </span>
     </PopoverButton>
@@ -36,9 +36,7 @@
         min-w-48
       "
     >
-      <router-link
-        v-for="option in options"
-        :key="option.link"
+      <div
         class="
           text-sm
           py-2
@@ -49,22 +47,33 @@
           whitespace-nowrap
           bg-transparent
           text-blueGray-700
+          cursor-pointer
         "
-        :to="option.link"
+        @click="logout"
       >
-        {{ option.text }}
-      </router-link>
+        Logout
+      </div>
     </PopoverPanel>
   </Popover>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import { useCookies } from '@vueuse/integrations/useCookies';
+import { useRouter } from 'vue-router';
 
-const props = defineProps({
-  src: String,
+defineProps({
+  src: {
+    type: String,
+    required: true,
+  },
 });
 
-const options = ref([{ link: '/analytics', text: 'Analytics' }]);
+const router = useRouter();
+const { remove } = useCookies(['api_key']);
+
+const logout = () => {
+  remove('api_key');
+  router.push('/login');
+};
 </script>

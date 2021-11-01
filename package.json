@@ -10,6 +10,7 @@
     "@headlessui/vue": "^1.4.1",
     "@heroicons/vue": "^1.0.5",
     "@vueuse/core": "^6.7.4",
+    "@vueuse/integrations": "^6.7.4",
     "axios": "^0.24.0",
     "ohmyfetch": "^0.4.2",
     "universal-cookie": "^4.0.4",
