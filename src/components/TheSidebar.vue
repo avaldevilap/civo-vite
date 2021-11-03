@@ -195,17 +195,17 @@
               <DisclosureButton
                 class="
                   w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  items-center
                   text-xs
                   uppercase
-                  py-3
                   font-bold
                   block
                   text-gray-500
                   hover:bg-primary-dark hover:text-white
-                  px-4
-                  hover:rounded-lg
-                  inline-flex
-                  items-center
+                  rounded-lg
                 "
               >
                 <component :is="option.icon" class="w-6 h-6 mr-2"></component>
@@ -213,7 +213,7 @@
                 <ChevronDownIcon class="w-4 h-4 ml-auto" />
               </DisclosureButton>
               <DisclosurePanel class="text-gray-500">
-                <ul class="flex flex-col space-y-2">
+                <ul class="mt-2 flex flex-col space-y-2">
                   <li
                     v-for="child in option.children"
                     :key="child.link"
@@ -227,8 +227,9 @@
                       <a
                         :href="href"
                         :class="{
-                          '!text-white bg-primary-dark px-4 rounded-lg':
+                          'text-white bg-primary-dark px-4 rounded-lg':
                             isActive,
+                          'text-gray-500': !isActive,
                         }"
                         class="
                           w-full
@@ -237,10 +238,9 @@
                           py-3
                           font-bold
                           block
-                          text-gray-500
                           hover:bg-primary-dark hover:text-white
                           px-4
-                          hover:rounded-lg
+                          rounded-lg
                           inline-flex
                           items-center
                         "
@@ -267,7 +267,8 @@
               <a
                 :href="href"
                 :class="{
-                  '!text-white bg-primary-dark px-4 rounded-lg': isActive,
+                  'text-white bg-primary-dark px-4 rounded-lg': isActive,
+                  'text-gray-500': !isActive,
                 }"
                 class="
                   w-full
@@ -276,10 +277,9 @@
                   py-3
                   font-bold
                   block
-                  text-gray-500
                   hover:bg-primary-dark hover:text-white
+                  rounded-lg
                   px-4
-                  hover:rounded-lg
                   inline-flex
                   items-center
                 "

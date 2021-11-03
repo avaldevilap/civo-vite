@@ -4,6 +4,7 @@ import routes from 'virtual:generated-pages';
 import App from './App.vue';
 import axios from 'axios';
 import { useCookies } from '@vueuse/integrations/useCookies';
+import './index.css';
 
 axios.defaults.baseURL = import.meta.env.VITE_CIVO_API_URL;
 axios.defaults.headers.common['Authorization'] = `Bearer ${

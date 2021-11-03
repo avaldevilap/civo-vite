@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { useTitle } from '@vueuse/core';
-import KubernetesHero from '../components/KubernetesHero.vue';
+import KubernetesHero from '../../components/KubernetesHero.vue';
 
 useTitle('Kubernetes - Civo.com');
 </script>

@@ -41,8 +41,8 @@ import { onMounted, reactive } from 'vue';
 import StatsCard from '../components/StatsCard.vue';
 import Table from '../components/Table.vue';
 import axios from 'axios';
-import { Region } from '../types';
 import { useTitle } from '@vueuse/core';
+import { Region } from '../index';
 
 interface Store {
   isFetching: boolean;

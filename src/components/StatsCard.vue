@@ -55,7 +55,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import { ArrowUpIcon, ChartBarIcon } from '@heroicons/vue/solid';
-import { Region } from '../types';
+import { Region } from '../index';
 
 const props = defineProps({
   region: { type: Object as PropType<Region>, required: true },
