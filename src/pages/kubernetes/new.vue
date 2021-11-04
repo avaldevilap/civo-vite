@@ -8,8 +8,22 @@
   </div>
 
   <div class="px-4 md:px-10 mx-auto w-full -m-24">
-    <div class="max-w-md">
-      <ClusterForm class="grid grid-cols-1 gap-6 z-20" />
+    <div class="flex flex-wrap">
+      <div
+        class="
+          relative
+          w-full
+          xl:max-w-4xl xl:mx-auto
+          2xl:max-w-7xl
+          p-4
+          rounded-lg
+          shadow-lg
+          bg-gray-100
+          border-0
+        "
+      >
+        <ClusterForm class="grid grid-cols-1 gap-6 z-20" />
+      </div>
     </div>
   </div>
 </template>

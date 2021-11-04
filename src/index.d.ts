@@ -43,3 +43,21 @@ export interface Instance {
   ram_mb: number;
   disk_gb: number;
 }
+
+export interface Network {
+  id: string;
+  label: string;
+  name: string;
+  default: boolean;
+}
+
+export interface Firewall {
+  id: string;
+  name: string;
+  account_id: string;
+  rules_count: number;
+  instances_count: null;
+  default: string;
+  label: null;
+  network_id: string;
+}
