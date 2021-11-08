@@ -41,25 +41,48 @@
             </div>
           </div>
         </div>
-        <p class="flex text-sm text-blueGray-400 mt-4">
-          <span class="flex mr-2 text-emerald-500">
-            {{ region.instances.length }}
-          </span>
-          <span class="whitespace-nowrap">instances</span>
-        </p>
+        <template v-if="isLoading">
+          <h2 class="px-4 text-2xl text-white">Loading...</h2>
+        </template>
+        <template v-else-if="isError">
+          <h2 class="px-4 text-red-500">Error: {{ error.message }}</h2>
+        </template>
+        <template v-else>
+          <p class="flex text-sm text-blueGray-400 mt-4">
+            <span class="flex mr-2 text-emerald-500">
+              {{ instances.length }}
+            </span>
+            <span class="whitespace-nowrap">instances</span>
+          </p>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType, reactive } from 'vue';
 import { ArrowUpIcon, ChartBarIcon } from '@heroicons/vue/solid';
-import { Region } from '../index';
+import { Instance, Region } from '../index';
+import axios from 'axios';
+import { useQuery } from 'vue-query';
 
 const props = defineProps({
   region: { type: Object as PropType<Region>, required: true },
 });
+
+const fetchInstancesByRegion = (code: string) =>
+  axios.get(`/instances?region=${code}`).then((res) => res.data.items);
+
+const {
+  isLoading,
+  isError,
+  error,
+  data: instances,
+} = useQuery<Instance[]>(
+  reactive(['instances', { code: props.region.code }]),
+  () => fetchInstancesByRegion(props.region.code)
+);
 
 const getCountryFlag = () => {
   switch (props.region.country) {

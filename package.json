@@ -17,6 +17,7 @@
     "universal-cookie": "^4.0.4",
     "vee-validate": "^4.5.5",
     "vue": "^3.2.16",
+    "vue-query": "^1.13.0",
     "vue-router": "^4.0.12",
     "yup": "^0.32.11"
   },

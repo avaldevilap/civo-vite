@@ -1,8 +1,9 @@
 <template>
   <RadioGroup v-model="modelValue">
-    <RadioGroupLabel class="mb-2 text-gray-700">Select size</RadioGroupLabel>
+    <RadioGroupLabel class="text-gray-700">Select size</RadioGroupLabel>
     <div
       class="
+        mt-2
         grid
         gap-4
         grid-cols-1
@@ -13,16 +14,16 @@
     >
       <RadioGroupOption
         as="template"
-        v-for="plan in plans"
-        :key="plan.name"
-        :value="plan"
+        v-for="size in filteredSizes"
+        :key="size.name"
+        :value="size"
         v-slot="{ active, checked }"
-        @click="$emit('update:modelValue', plan)"
+        @click="$emit('update:modelValue', size)"
       >
         <div
           :class="[
             active
-              ? 'ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60'
+              ? 'ring-2 ring-offset-2 ring-offset-primary-light ring-white ring-opacity-60'
               : '',
             checked ? 'bg-primary-dark bg-opacity-75 text-white ' : 'bg-white ',
           ]"
@@ -45,25 +46,27 @@
                   :class="checked ? 'text-white' : 'text-gray-900'"
                   class="font-medium"
                 >
-                  {{ plan.name }}
+                  {{ size.nice_name }}
                 </RadioGroupLabel>
                 <RadioGroupDescription
                   as="span"
                   :class="checked ? 'text-primary-light' : 'text-gray-500'"
                 >
                   <div class="lg:grid lg:grid-rows-3">
-                    <span> {{ plan.ram }}/{{ plan.cpus }}</span>
+                    <span>
+                      {{ size.ram_mb / 1024 }} GB RAM/{{ size.cpu_cores }} CPU
+                    </span>
                     <span class="lg:hidden" aria-hidden="true"> &middot; </span>
-                    <span>{{ plan.disk }}</span>
-                    <span class="lg:hidden" aria-hidden="true"> &middot; </span>
-                    <span>{{ plan.transfer }}</span>
+                    <span>{{ size.disk_gb }} NVMe</span>
+                    <!-- <span class="lg:hidden" aria-hidden="true"> &middot; </span> -->
+                    <!-- <span>{{ plan.transfer }}</span> -->
                   </div>
-                  <span
+                  <!-- <span
                     :class="checked ? 'text-white' : 'text-gray-900'"
                     class="font-medium"
                   >
                     {{ plan.price }}
-                  </span>
+                  </span> -->
                 </RadioGroupDescription>
               </div>
             </div>
@@ -78,6 +81,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import {
   RadioGroup,
   RadioGroupLabel,
@@ -86,57 +90,12 @@ import {
 } from '@headlessui/vue';
 import { CheckCircleIcon } from '@heroicons/vue/solid';
 
-defineProps(['modelValue']);
+const props = defineProps(['modelValue', 'sizes']);
 defineEmits(['update:modelValue']);
 
-const plans = [
-  {
-    name: 'Extra Small',
-    ram: '1GB',
-    cpus: '1 CPU',
-    disk: '15 GB NVMe',
-    transfer: '1 TB',
-    price: '$4 per month',
-  },
-  {
-    name: 'Small',
-    ram: '2GB',
-    cpus: '1 CPU',
-    disk: '15 GB NVMe',
-    transfer: '1 TB',
-    price: '$8 per month',
-  },
-  {
-    name: 'Medium',
-    ram: '4GB',
-    cpus: '2 CPUs',
-    disk: '15 GB NVMe',
-    transfer: '2 TB',
-    price: '$16 per month',
-  },
-  {
-    name: 'Large',
-    ram: '8GB',
-    cpus: '4 CPUs',
-    disk: '15 GB NVMe',
-    transfer: '4 TB',
-    price: '$32 per month',
-  },
-  {
-    name: 'Extra Large',
-    ram: '16GB',
-    cpus: '6 CPUs',
-    disk: '15 GB NVMe',
-    transfer: '6 TB',
-    price: '$64 per month',
-  },
-  {
-    name: '2X Large',
-    ram: '32GB',
-    cpus: '8 CPUs',
-    disk: '15 GB NVMe',
-    transfer: '8 TB',
-    price: '$128 per month',
-  },
-];
+const filteredSizes = computed(() =>
+  props.sizes.filter(
+    (size: any) => size.name.includes('k3s') && size.selectable === true
+  )
+);
 </script>

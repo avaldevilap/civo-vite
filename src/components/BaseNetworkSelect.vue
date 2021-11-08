@@ -1,8 +1,9 @@
 <template>
   <RadioGroup v-model="modelValue">
-    <RadioGroupLabel class="mb-2 text-gray-700">Network</RadioGroupLabel>
+    <RadioGroupLabel class="text-gray-700">Network</RadioGroupLabel>
     <div
       class="
+        mt-2
         grid
         gap-4
         grid-cols-1
@@ -22,7 +23,7 @@
         <div
           :class="[
             active
-              ? 'ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60'
+              ? 'ring-2 ring-offset-2 ring-offset-primary-light ring-white ring-opacity-60'
               : '',
             checked ? 'bg-primary-dark bg-opacity-75 text-white ' : 'bg-white ',
           ]"
@@ -60,12 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  RadioGroup,
-  RadioGroupLabel,
-  RadioGroupOption,
-  RadioGroupDescription,
-} from '@headlessui/vue';
+import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
 import { CheckCircleIcon } from '@heroicons/vue/solid';
 
 defineProps(['modelValue', 'networks']);
