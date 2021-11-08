@@ -7,14 +7,14 @@
     <router-view />
   </div>
 
-  <VueQueryDevTools />
+  <!-- <VueQueryDevTools /> -->
 </template>
 
 <script setup lang="ts">
 import TheHeader from './components/TheHeader.vue';
 import TheSidebar from './components/TheSidebar.vue';
 import { useQueryProvider } from 'vue-query';
-import { VueQueryDevTools } from 'vue-query/devtools';
+// import { VueQueryDevTools } from 'vue-query/devtools';
 
 useQueryProvider();
 </script>
