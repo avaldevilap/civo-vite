@@ -4,7 +4,9 @@
   <div class="relative md:ml-64 bg-blueGray-100">
     <TheHeader />
 
-    <router-view />
+    <main role="main">
+      <router-view />
+    </main>
   </div>
 
   <!-- <VueQueryDevTools /> -->

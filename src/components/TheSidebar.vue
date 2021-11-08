@@ -21,6 +21,7 @@
       py-4
       px-6
     "
+    aria-label="sidenav"
   >
     <div
       class="
@@ -166,7 +167,6 @@
               type="text"
               placeholder="Search"
               class="
-                border-0
                 px-3
                 py-2
                 h-12
@@ -197,12 +197,11 @@
                   w-full
                   py-3
                   px-4
-                  inline-flex
                   items-center
                   text-xs
                   uppercase
                   font-bold
-                  block
+                  inline-flex
                   text-gray-500
                   hover:bg-primary-dark hover:text-white
                   rounded-lg
@@ -237,7 +236,6 @@
                           uppercase
                           py-3
                           font-bold
-                          block
                           hover:bg-primary-dark hover:text-white
                           px-4
                           rounded-lg
@@ -276,7 +274,6 @@
                   uppercase
                   py-3
                   font-bold
-                  block
                   hover:bg-primary-dark hover:text-white
                   rounded-lg
                   px-4
@@ -312,7 +309,6 @@ import {
   ChatAlt2Icon,
   CogIcon,
   MenuIcon,
-  BellIcon,
   XIcon,
 } from '@heroicons/vue/outline';
 import { ChevronDownIcon } from '@heroicons/vue/solid';

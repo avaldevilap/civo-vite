@@ -16,9 +16,9 @@
       <div class="flex-auto p-4">
         <div class="flex flex-wrap">
           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-            <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+            <h2 class="text-blueGray-400 uppercase font-bold text-xs">
               {{ region.country_name }}
-            </h5>
+            </h2>
             <span class="font-semibold text-xl text-blueGray-700">
               {{ region.code }}
             </span>
@@ -45,12 +45,12 @@
           <h2 class="px-4 text-2xl text-white">Loading...</h2>
         </template>
         <template v-else-if="isError">
-          <h2 class="px-4 text-red-500">Error: {{ error.message }}</h2>
+          <h2 class="px-4 text-red-500">Error: {{ error }}</h2>
         </template>
         <template v-else>
           <p class="flex text-sm text-blueGray-400 mt-4">
             <span class="flex mr-2 text-emerald-500">
-              {{ instances.length }}
+              {{ instances?.length }}
             </span>
             <span class="whitespace-nowrap">instances</span>
           </p>

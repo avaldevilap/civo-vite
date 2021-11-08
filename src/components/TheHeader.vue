@@ -28,7 +28,7 @@
     >
       <div
         class="
-          text-white text-sm
+          text-primary-dark text-sm
           uppercase
           hidden
           lg:inline-block
@@ -46,7 +46,6 @@
               h-full
               leading-snug
               font-normal
-              absolute
               text-center text-blueGray-300
               absolute
               bg-transparent
@@ -71,7 +70,7 @@
               placeholder-blueGray-300
               text-blueGray-600
               relative
-              bg-white bg-white
+              bg-white
               rounded
               text-sm
               shadow

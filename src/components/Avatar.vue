@@ -1,5 +1,5 @@
 <template>
-  <Popover class="relative">
+  <Popover class="relative" as="li">
     <PopoverButton class="flex items-center">
       <span
         class="
